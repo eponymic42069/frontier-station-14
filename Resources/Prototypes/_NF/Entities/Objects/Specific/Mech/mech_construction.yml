@@ -1,0 +1,83 @@
+- type: entity
+  parent: BaseRipleyPart
+  id: HoverRipleyHarness
+  name: hover ripley harness
+  description: The core of the Ripley APLU. This one has been modified.
+  components:
+  - type: Appearance
+  - type: ItemMapper
+    mapLayers:
+      ripley_l_arm+o:
+        whitelist:
+          tags:
+          - RipleyLArm
+      ripley_r_arm+o:
+        whitelist:
+          tags:
+          - RipleyRArm
+      ripley_l_leg+o:
+        whitelist:
+          tags:
+          - HoverRipleyLLeg
+      ripley_r_leg+o:
+        whitelist:
+          tags:
+          - HoverRipleyRLeg
+    sprite: Objects/Specific/Mech/ripley_construction.rsi
+  - type: ContainerContainer
+    containers:
+      mech-assembly-container: !type:Container
+  - type: MechAssembly
+    finishedPrototype: HoverRipleyChassis
+    requiredParts:
+      RipleyLArm: false
+      RipleyRArm: false
+      HoverRipleyLLeg: false
+      HoverRipleyRLeg: false
+  - type: Sprite
+    state: ripley_harness+o
+    noRot: true
+
+- type: entity
+  parent: BaseRipleyPartItem
+  id: HoverRipleyLLeg
+  name: hover ripley left leg
+  description: The left leg of the Ripley APLU. It belongs on the chassis of the mech. This has been modified with thrusters.
+  components:
+  - type: Sprite
+    state: ripley_l_leg
+  - type: Tag
+    tags:
+    - HoverRipleyLLeg
+
+- type: entity
+  parent: BaseRipleyPartItem
+  id: HoverRipleyRLeg
+  name: hover ripley right leg
+  description: The right leg of the Ripley APLU. It belongs on the chassis of the mech. This has been modified with thrusters.
+  components:
+  - type: Sprite
+    state: ripley_r_leg
+  - type: Tag
+    tags:
+    - HoverRipleyRLeg
+
+- type: entity
+  id: HoverRipleyChassis
+  parent: RipleyChassis
+  name: hover ripley chassis
+  description: An in-progress construction of the Ripley APLU mech. This one have been questionably modified.
+  components:
+  - type: Appearance
+  - type: ContainerContainer
+    containers:
+      battery-container: !type:Container
+  - type: MechAssemblyVisuals
+    statePrefix: ripley
+  - type: Sprite
+    noRot: true
+    state: ripley0
+  - type: Construction
+    graph: HoverRipley
+    node: start
+    defaultTarget: hoverripley

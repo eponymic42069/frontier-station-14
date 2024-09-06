@@ -1,0 +1,69 @@
+- type: constructionGraph
+  id: HoverRipleyHarness
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: hoverripleyharness
+          steps:
+            - tool: Sawing
+              doAfter: 2
+    - node: hoverripleyharness
+
+- type: constructionGraph
+  id: HoverRipleyLeftLeg
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: hoverripleyleftleg
+      steps:
+      - tag: PowerCellMicroreactor
+        icon:
+          sprite: Objects/Power/power_cells.rsi/microreactor.png
+          state: icon
+        name: microreactor power cell
+      - tag: SmallThrusterMachineCircuitboard
+        icon:
+          sprite: Objects/Misc/module.rsi
+          state: generic
+        name: small thruster machine board
+        doAfter: 2
+      - tag: RipleyLLeg
+        icon:
+          sprite: Objects/Specific/Mech/ripley_construction.rsi/ripley_l_leg.png
+          state: icon
+        name: microreactor power cell
+      - material: Steel
+        amount: 1
+  - node: hoverripleyleftleg
+    entity: hoverripleyleftleg
+
+- type: constructionGraph
+  id: HoverRipleyRightLeg
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: hoverripleyrightleg
+      steps:
+      - tag: PowerCellMicroreactor
+        icon:
+          sprite: Objects/Power/power_cells.rsi/microreactor.png
+          state: icon
+        name: microreactor power cell
+      - tag: SmallThrusterMachineCircuitboard
+        icon:
+          sprite: Objects/Misc/module.rsi
+          state: generic
+        name: small thruster machine board
+        doAfter: 2
+      - tag: RipleyRLeg
+        icon:
+          sprite: Objects/Specific/Mech/ripley_construction.rsi/ripley_r_leg.png
+          state: icon
+        name: microreactor power cell
+      - material: Steel
+        amount: 1
+  - node: hoverripleyrightleg
+    entity: hoverripleyrightleg
